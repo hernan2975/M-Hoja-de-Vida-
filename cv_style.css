@@ -1,550 +1,266 @@
 /* Variables CSS para consistencia */
 :root {
-        --primary-color: #0056b3; /* Azul profesional */
-            --secondary-color: #007bff; /* Azul más claro para acentos */
-                --text-dark: #333;
-                    --text-light: #f4f4f4;
-                        --bg-light: #ffffff;
-                            --bg-dark-sidebar: #334e68; /* Azul grisáceo oscuro para sidebar */
-                                --border-light: #e0e0e0;
-                                    --shadow-subtle: rgba(0, 0, 0, 0.1);
-                                        --font-heading: 'Montserrat', sans-serif;
-                                            --font-body: 'Open Sans', sans-serif;
+    --primary-color: #337ab7; /* Un azul profesional */
+    --secondary-color: #5cb85c; /* Un verde sutil para acentos */
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --bg-light: #ffffff;
+    --bg-dark-sidebar: #f8f8f8; /* Gris claro para la barra lateral */
+    --border-light: #ddd;
+    --shadow-subtle: rgba(0, 0, 0, 0.1);
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Una fuente limpia y profesional */
+    --font-body: 'Open Sans', Calibri, sans-serif;
 }
 
 /* Reset y Estilos Básicos */
 * {
-        margin: 0;
-            padding: 0;
-                box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-        font-family: var(--font-body);
-            line-height: 1.6;
-                color: var(--text-dark);
-                    background-color: #f4f7f6; /* Un gris muy claro de fondo */
-                        min-height: 100vh;
-                            display: flex;
-                                flex-direction: column;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #f4f7f6; /* Un fondo gris muy claro */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
-        color: var(--secondary-color);
-            text-decoration: none;
-                transition: color 0.3s ease;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-        color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 ul {
-        list-style: none;
+    list-style: none;
 }
 
 /* Encabezado del CV */
 .cv-header {
-        background-color: var(--primary-color);
-            color: var(--text-light);
-                padding: 40px 20px;
-                    text-align: center;
-                        position: relative;
-                            box-shadow: 0 4px 10px var(--shadow-subtle);
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 5px var(--shadow-subtle);
 }
 
 .header-content {
-        max-width: 1200px;
-            margin: 0 auto;
-                display: flex;
-                    flex-direction: row; /* Horizontal en desktop */
-                        align-items: center;
-                            justify-content: center;
-                                gap: 40px;
-                                    flex-wrap: wrap; /* Para que se ajuste en móviles */
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Apilar en móvil por defecto */
+    align-items: center;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .name-title-group {
-        text-align: right; /* Alinea texto a la derecha */
+    text-align: center; /* Centrar texto inicialmente */
+}
+
+@media (min-width: 768px) {
+    .name-title-group {
+        text-align: left;
+    }
 }
 
 .cv-header h1 {
-        font-family: var(--font-heading);
-            font-size: 3.5em; /* Grande para destacar */
-                font-weight: 700;
-                    margin-bottom: 5px;
-                        color: var(--text-light);
-                            line-height: 1.1;
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-light);
+    line-height: 1.1;
 }
 
 .cv-header h2 {
-        font-family: var(--font-heading);
-            font-size: 1.6em;
-                font-weight: 500;
-                    color: rgba(255, 255, 255, 0.9);
-                        margin-top: 0;
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0;
 }
 
 .profile-photo-container {
-        width: 180px;
-            height: 180px;
-                border-radius: 50%;
-                    overflow: hidden;
-                        border: 5px solid rgba(255, 255, 255, 0.8);
-                            box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.3); /* Anillo exterior */
-                                flex-shrink: 0; /* No se encoge */
+    width: 120px; /* Tamaño más pequeño */
+    height: 120px; /* Cuadrado */
+    border-radius: 50%; /* Circular */
+    overflow: hidden;
+    border: 3px solid var(--bg-light);
+    box-shadow: 0 1px 3px var(--shadow-subtle);
+    flex-shrink: 0; /* Prevenir que se encoja */
 }
 
 .profile-photo {
-        width: 100%;
-            height: 100%;
-                object-fit: cover;
-                    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Contenido Principal (Columnas) */
 .cv-main-content {
-        display: flex;
-            flex-wrap: wrap; /* Permite que las columnas se apilen en móviles */
-                max-width: 1200px;
-                    margin: 30px auto;
-                        padding: 0 20px;
-                            gap: 30px; /* Espacio entre columnas */
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+    gap: 20px;
 }
 
 .sidebar {
-        flex: 1; /* Ocupa el espacio restante */
-            min-width: 280px; /* Mínimo para sidebar */
-                background-color: var(--bg-dark-sidebar);
-                    color: var(--text-light);
-                        padding: 30px;
-                            border-radius: 8px;
-                                box-shadow: 0 2px 8px var(--shadow-subtle);
+    flex: 0 1 30%; /* Ajustar ancho según necesidad */
+    min-width: 250px;
+    background-color: var(--bg-dark-sidebar);
+    color: var(--text-dark);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px var(--shadow-subtle);
 }
 
 .main-column {
-        flex: 2; /* Ocupa el doble de espacio */
-            min-width: 500px; /* Mínimo para columna principal */
-                background-color: var(--bg-light);
-                    padding: 30px;
-                        border-radius: 8px;
-                            box-shadow: 0 2px 8px var(--shadow-subtle);
+    flex: 0 1 65%; /* Ajustar ancho según necesidad */
+    background-color: var(--bg-light);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px var(--shadow-subtle);
 }
 
 /* Estilos de Sección */
 section {
-        margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 section h3 {
-        font-family: var(--font-heading);
-            font-size: 1.8em;
-                color: var(--primary-color);
-                    margin-bottom: 20px;
-                        border-bottom: 2px solid var(--secondary-color);
-                            padding-bottom: 10px;
-                                display: flex;
-                                    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    display: flex;
+    align-items: center;
 }
 
 section h3 i {
-        margin-right: 12px;
-            color: var(--secondary-color);
-                font-size: 1.1em;
+    margin-right: 8px;
+    color: var(--secondary-color);
+    font-size: 1.1em;
 }
 
 /* Contacto y Habilidades Blandas */
+.contact-info h3,
+.soft-skills h3,
+.languages h3 {
+    color: var(--text-dark);
+    border-bottom-color: var(--border-light);
+}
+
 .contact-info ul li,
 .soft-skills ul li,
 .languages ul li {
-        margin-bottom: 10px;
-            line-height: 1.5;
-                font-size: 0.95em;
-                    display: flex;
-                        align-items: flex-start;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    font-size: 0.9em;
+    display: flex;
+    align-items: flex-start;
+    color: var(--text-dark);
 }
 
 .contact-info ul li i,
 .soft-skills ul li i,
 .languages ul li i {
-        margin-right: 12px;
-            color: var(--secondary-color);
-                font-size: 1em;
-                    flex-shrink: 0; /* No se encoge el icono */
-                        margin-top: 3px; /* Alineación con el texto */
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1em;
+    flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .contact-info a {
-        color: var(--text-light);
+    color: var(--primary-color);
 }
+
 .contact-info a:hover {
-        color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 /* Perfil Profesional */
 .profile-summary p {
-        font-size: 1em;
-            line-height: 1.8;
-                color: var(--text-dark);
+    font-size: 1em;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 15px;
 }
+
 .profile-summary p strong {
-        color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 /* Experiencia Laboral */
 .job-entry {
-        margin-bottom: 25px;
-            padding-bottom: 15px;
-                border-bottom: 1px dashed var(--border-light);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-light);
 }
 
 .job-entry:last-child {
-        border-bottom: none;
-            margin-bottom: 0;
-                padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .job-entry h4 {
-        font-family: var(--font-heading);
-            font-size: 1.3em;
-                color: var(--primary-color);
-                    margin-bottom: 5px;
+    font-family: var(--font-heading);
+    font-size: 1.1em;
+    color: var(--primary-color);
+    margin-bottom: 3px;
+    font-weight: bold;
 }
 
 .job-entry .company-date {
-        font-size: 0.9em;
-            color: #666;
-                margin-bottom: 10px;
-                    font-weight: 600;
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 8px;
+    font-style: italic;
 }
 
 .job-entry ul {
-        margin-left: 20px;
-            list-style: disc; /* Vuelven los bullets para listas de tareas */
-                color: var(--text-dark);
+    margin-left: 20px;
+    list-style: disc;
+    color: var(--text-dark);
 }
 
 .job-entry ul li {
-        margin-bottom: 8px;
-            font-size: 0.95em;
+    margin-bottom: 5px;
+    font-size: 0.9em;
 }
 
 /* Habilidades Técnicas (Grid) */
 .skills-grid {
-        display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* 2 columnas en desktop, 1 en mobile */
-                gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
 }
 
 .skill-category {
-        background-color: #f9f9f9;
-            padding: 20px;
-                border-radius: 6px;
-                    border-left: 4px solid var(--secondary-color);
-                        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
-
-.skill-category h4 {
-        font-family: var(--font-heading);
-            font-size: 1.1em;
-                color: var(--primary-color);
-                    margin-bottom: 10px;
-                        display: flex;
-                            align-items: center;
-}
-.skill-category h4 i {
-        margin-right: 8px;
-            color: var(--secondary-color);
-}
-
-.skill-category ul li {
-        font-size: 0.9em;
-            color: var(--text-dark);
-                margin-bottom: 5px;
-                    padding-left: 15px;
-                        position: relative;
-}
-.skill-category ul li::before {
-        content: '▪'; /* Icono cuadrado o bullet */
-            color: var(--secondary-color);
-                position: absolute;
-                    left: 0;
-                        font-size: 1.1em;
-                            line-height: 1;
-}
-.skill-category ul li strong {
-        color: var(--primary-color);
-}
-
-/* Educación y Certificaciones (Grid o Lista) */
-.education-grid {
-        display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Más espacio para textos largos */
-                gap: 20px;
-}
-.edu-entry {
-        background-color: #f9f9f9;
-            padding: 15px;
-                border-radius: 6px;
-                    border-left: 4px solid var(--secondary-color);
-                        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-}
-
-.edu-entry h4 {
-        font-family: var(--font-heading);
-            font-size: 1.2em;
-                color: var(--primary-color);
-                    margin-bottom: 5px;
-}
-
-.edu-entry .institution-date {
-        font-size: 0.9em;
-            color: #666;
-                font-weight: 600;
-}
-
-/* Pie de Página */
-.cv-footer {
-        background-color: var(--bg-dark-sidebar);
-            color: var(--text-light);
-                text-align: center;
-                    padding: 20px;
-                        font-size: 0.85em;
-                            margin-top: auto; /* Empuja el footer hacia abajo */
-                                box-shadow: 0 -2px 8px var(--shadow-subtle);
-}
-.cv-footer a {
-        color: var(--secondary-color);
-}
-.cv-footer a:hover {
-        color: var(--text-light);
-            text-decoration: underline;
-}
-
-/* --- Responsive Design Media Queries --- */
-
-/* Tabletas y pantallas más pequeñas (vertical) */
-@media (max-width: 992px) {
-        .header-content {
-                    flex-direction: column; /* Apila el nombre/título y la foto */
-                            text-align: center;
-                                    gap: 25px;
-        }
-            .name-title-group {
-                        text-align: center; /* Centra el texto */
-            }
-                .cv-header h1 {
-                            font-size: 2.8em;
-                }
-                    .cv-header h2 {
-                                font-size: 1.4em;
-                    }
-                        .profile-photo-container {
-                                    width: 150px;
-                                            height: 150px;
-                        }
-
-                            .cv-main-content {
-                                        flex-direction: column; /* Columnas se apilan */
-                                                gap: 20px;
-                            }
-                                .sidebar, .main-column {
-                                            min-width: unset; /* Elimina el mínimo para que se ajuste */
-                                                    flex: auto; /* Ocupa el ancho completo disponible */
-                                                            padding: 25px;
-                                }
-                                    .skills-grid, .education-grid {
-                                                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Permite 2 columnas si hay espacio */
-                                                        gap: 15px;
-                                    }
-                                        section h3 {
-                                                    font-size: 1.6em;
-                                                            margin-bottom: 15px;
-                                        }
-}
-
-/* Móviles pequeños */
-@media (max-width: 576px) {
-        .cv-header {
-                    padding: 30px 15px;
-        }
-            .cv-header h1 {
-                        font-size: 2.2em;
-            }
-                .cv-header h2 {
-                            font-size: 1.1em;
-                }
-                    .profile-photo-container {
-                                width: 120px;
-                                        height: 120px;
-                                                border-width: 3px;
-                                                        box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.3);
-                    }
-                        .cv-main-content {
-                                    padding: 0 15px;
-                                            margin-top: 20px;
-                        }
-                            .sidebar, .main-column {
-                                        padding: 20px;
-                            }
-                                section h3 {
-                                            font-size: 1.4em;
-                                                    margin-bottom: 15px;
-                                }
-                                    .job-entry h4 {
-                                                font-size: 1.1em;
-                                    }
-                                        .job-entry .company-date {
-                                                    font-size: 0.85em;
-                                        }
-                                            .skills-grid, .education-grid {
-                                                        grid-template-columns: 1fr; /* Una columna para asegurar legibilidad */
-                                                                gap: 15px;
-                                            }
-                                                .skill-category h4, .edu-entry h4 {
-                                                            font-size: 1em;
-                                                }
-                                                    .contact-info ul li,
-                                                        .soft-skills ul li,
-                                                            .languages ul li,
-                                                                .job-entry ul li,
-                                                                    .skill-category ul li,
-                                                                        .edu-entry .institution-date {
-                                                                                    font-size: 0.9em;
-                                                                        }
-}
-
-/* Estilos para impresión (optimización para PDF) */
-@media print {
-        body {
-                    background-color: #fff;
-                            color: #000;
-                                    margin: 0;
-                                            padding: 0;
-                                                    -webkit-print-color-adjust: exact !important;
-                                                            print-color-adjust: exact !important;
-        }
-            .cv-header, .sidebar, .cv-main-content, .cv-footer {
-                        box-shadow: none !important;
-                                margin: 0;
-                                        padding: 0;
-                                                border-radius: 0;
-            }
-                .cv-header {
-                            background-color: var(--primary-color) !important;
-                                    color: var(--text-light) !important;
-                                            padding: 20px;
-                }
-                    .sidebar {
-                                background-color: var(--bg-dark-sidebar) !important;
-                                        color: var(--text-light) !important;
-                                                padding: 15px;
-                    }
-                        .main-column {
-                                    background-color: #fff !important;
-                                            color: #000 !important;
-                                                    padding: 15px;
-                        }
-                            .cv-main-content {
-                                        display: flex;
-                                                flex-direction: row; /* Asegura dos columnas en impresión si hay espacio */
-                                                        width: 100%;
-                                                                gap: 15px;
-                            }
-                                .profile-photo-container {
-                                            border: 2px solid rgba(255, 255, 255, 0.8) !important;
-                                                    box-shadow: none !important;
-                                }
-                                    section h3 {
-                                                color: var(--primary-color) !important;
-                                                        border-bottom-color: var(--secondary-color) !important;
-                                    }
-                                        a {
-                                                    color: #000 !important; /* Enlaces en negro para impresión */
-                                                            text-decoration: underline !important;
-                                        }
-                                            .cv-footer {
-                                                        background-color: var(--bg-dark-sidebar) !important;
-                                                                color: var(--text-light) !important;
-                                                                        padding: 10px;
-                                            }
-}
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-}
-                                                                        }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-}
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
-}
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 3px;
+    border-left: 3px solid var(--secondary-color);
