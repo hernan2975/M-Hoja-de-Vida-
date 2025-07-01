@@ -28,4 +28,4 @@ Sigue estos pasos para visualizar el CV en tu navegador y luego descargarlo en f
 Si estás en GitHub, puedes clonar el repositorio:
 
 ```bash
-git clone [https://github.com/hll2975/M-Hoja-de-Vida.git]([https://github.com/hll2975/cv-hernan-lang.git](https://github.com/hll2975/M-Hoja-de-Vida.git)
+git clone [https://github.com/hll2975/M-Hoja-de-Vida-.git]([https://github.com/hll2975/cv-hernan-lang.git](https://github.com/hll2975/M-Hoja-de-Vida-.git)
