@@ -1,0 +1,44 @@
+# Archivos de sistema operativo y editores
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+~$*
+~*.tmp
+*.bak
+*.swp
+*.swo
+
+# Archivos de Node.js (si usas npm para dependencias o scripts)
+/node_modules
+npm-debug.log
+.yarn-integrity
+
+# Archivos de paquetes (si usas Bundlers como Webpack/Rollup o herramientas de construcción)
+/dist
+/build
+.parcel-cache
+
+# Archivos de Sass/Less (si usas preprocesadores CSS)
+.sass-cache/
+.vscode/
+
+# Archivos generados por IDEs (ej. VS Code, Sublime Text, Atom)
+.idea/             # IntelliJ IDEA
+*.iml              # IntelliJ IDEA
+.project           # Eclipse
+.classpath         # Eclipse
+.c9/               # AWS Cloud9
+*.sublime-project
+*.sublime-workspace
+
+# Archivos temporales o de caché específicos del desarrollo
+*.log
+*.tmp
+*.temp
+*.cache
+
+# Archivos de configuración local (si los tienes y no quieres compartirlos)
+config.local.js
+.env
+.env.*
